@@ -35,16 +35,16 @@ dependency "f5" {
   mock_outputs_allowed_terraform_commands = ["validate", "plan", "destroy"]
 }
 
-dependency "nginx" {
-  config_path = "../functions/nginx"
+// dependency "nginx" {
+//   config_path = "../functions/nginx"
 
-  mock_outputs = {
-    #nginx_public_ip   = "4.4.4.4"
-    #nginx_private_ip  = "5.5.5.5"
-    nginx_instancegroup_self_link = "https://www.googleapis.com/compute/v1/projects/f5-gcs-4261-sales-apcj-japan/regions/asia-northeast1/instancegroup/mock-ig1"
-  }
-  mock_outputs_allowed_terraform_commands = ["validate", "plan", "destroy"]
-}
+//   mock_outputs = {
+//     #nginx_public_ip   = "4.4.4.4"
+//     #nginx_private_ip  = "5.5.5.5"
+//     nginx_instancegroup_self_link = "https://www.googleapis.com/compute/v1/projects/f5-gcs-4261-sales-apcj-japan/regions/asia-northeast1/instancegroup/mock-ig1"
+//   }
+//   mock_outputs_allowed_terraform_commands = ["validate", "plan", "destroy"]
+// }
 
 dependency "consul" {
   config_path = "../functions/consul"
@@ -56,17 +56,17 @@ dependency "consul" {
   mock_outputs_allowed_terraform_commands = ["validate", "plan", "destroy"]
 }
 
-dependency "gke" {
-  config_path = "../functions/gke_cluster"
+// dependency "gke" {
+//   config_path = "../functions/gke_cluster"
 
-  mock_outputs = {
-    gke_cluster_name    = "clusterName"
-    gke_endpoint        = "3.3.3.3"
-    cluster_username    = "admin"
-    cluster_password    = "default"
-  }
-  mock_outputs_allowed_terraform_commands = ["validate", "plan", "destroy"]
-}
+//   mock_outputs = {
+//     gke_cluster_name    = "clusterName"
+//     gke_endpoint        = "3.3.3.3"
+//     cluster_username    = "admin"
+//     cluster_password    = "default"
+//   }
+//   mock_outputs_allowed_terraform_commands = ["validate", "plan", "destroy"]
+// }
 
 # These are the variables we have to pass in to use the module specified in the terragrunt configuration above
 inputs = {
@@ -75,11 +75,11 @@ inputs = {
   f5_private_ip                 = dependency.f5.outputs.f5_private_ip
   #nginx_public_ip              = dependency.nginx.outputs.nginx_public_ip
   #nginx_private_ip             = dependency.nginx.outputs.nginx_private_ip
-  nginx_instancegroup_self_link = dependency.nginx.outputs.nginx_instancegroup_self_link
+  #nginx_instancegroup_self_link = dependency.nginx.outputs.nginx_instancegroup_self_link
   consul_public_ip              = dependency.consul.outputs.consul_public_ip
   consul_private_ip             = dependency.consul.outputs.consul_private_ip
-  gke_cluster_name              = dependency.gke.outputs.gke_cluster_name
-  gke_endpoint                  = dependency.gke.outputs.gke_endpoint
+  #gke_cluster_name              = dependency.gke.outputs.gke_cluster_name
+  #gke_endpoint                  = dependency.gke.outputs.gke_endpoint
 
   app_tag_value         = "demostage"
   #use below var for multiple nginx deployements
