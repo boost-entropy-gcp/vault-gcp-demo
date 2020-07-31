@@ -84,6 +84,6 @@ inputs = {
   app_tag_value         = "demostage"
   #use below var for multiple nginx deployements
   #gcp_f5_pool_members  = join("','", dependency.nginx.outputs.nginx_private_ip)
-  cluster_username      = dependency.gke.outputs.cluster_username
-  cluster_password      = dependency.gke.outputs.cluster_password
+  #cluster_username      = dependency.gke.outputs.cluster_username
+  #cluster_password      = dependency.gke.outputs.cluster_password
 }
