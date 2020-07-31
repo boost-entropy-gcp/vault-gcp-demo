@@ -16,7 +16,7 @@
 // }
 
 terraform {
-  source = "github.com/tkam8/drone-demo-module//ansible_files?ref=v0.1"
+  source = "github.com/tkam8/vault-gcp-demo-module//ansible_files?ref=v0.1"
 }
 
 # Include all settings from the root terragrunt.hcl file

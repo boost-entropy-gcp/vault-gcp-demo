@@ -8,7 +8,7 @@
 remote_state {
   backend = "gcs"
   config = {
-    bucket         = "tky-drone-demo-stage"
+    bucket         = "tky-drone-demo-vault"
     prefix         = "${path_relative_to_include()}/terraform.tfstate"
   }
 }
@@ -42,7 +42,7 @@ inputs = merge(
     project           = "f5-gcs-4261-sales-apcj-japan"
   },
   {
-    allowed_networks  = ["210.226.41.0/24"]
+    allowed_networks  = ["210.226.41.0/24",  "210.191.58.0/24"]
   },
   {
     ## The URL for downloading F5 Declarative Onboarding. Please check and update the latest DO URL from https://github.com/F5Networks/f5-declarative-onboarding/releases
