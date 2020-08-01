@@ -23,12 +23,12 @@
   roles:
    - f5_as3_declare
 
-- name: GKE nginxweb
-  hosts: gke_systems
-  connection: local
-  gather_facts: true
-  roles:
-   - app1_gke_onboarding
+# - name: GKE nginxweb
+#   hosts: gke_systems
+#   connection: local
+#   gather_facts: true
+#   roles:
+#    - app1_gke_onboarding
 
 # - name: GCP NGINX Cache Config1
 #   hosts: gcp_nginx_systems
