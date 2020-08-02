@@ -21,21 +21,6 @@
                         "trafficGroup": "/Common/traffic-group-1",
                         "virtualAddress": "{{ as3_virtual_address }}"
                     },
-                    "serviceNGINX": {
-                        "class": "Service_HTTPS",
-                        "virtualAddresses": [{ "use": "svcaddr1"}],
-                        "virtualPort": 443,
-                        "pool": "{{ as3_pool_name }}",
-                        "securityLogProfiles": [
-                            {
-                                "bigip": "/Common/Log all requests" 
-                            }
-                        ],
-                        "policyWAF": {
-                            "use": "{{ as3_waf_name }}"
-                        },
-                        "serverTLS": "frontside"
-                    },
                     "serviceVault": {
                         "class": "Service_HTTPS",
                         "virtualAddresses": [{ "use": "svcaddr1"}],
