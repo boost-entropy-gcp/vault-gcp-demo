@@ -19,8 +19,8 @@ steps:
     #   from_secret: gke_password
   commands:
   - cd terraform-ansible-google/non-prod/
-  - terragrunt apply-all --terragrunt-non-interactive -auto-approve
-  #- terragrunt destroy-all --terragrunt-non-interactive -force
+  #- terragrunt apply-all --terragrunt-non-interactive -auto-approve
+  - terragrunt destroy-all --terragrunt-non-interactive -force
 
 - name: SSH key preparation for Ansible Plugin
   image: tkam8/tfansible:latest
@@ -53,20 +53,20 @@ steps:
 #   - cd terraform-ansible-google/non-prod/europe-west2/stage/ansible/playbooks/
 #   - ansible-playbook --inventory inventory/hosts -vvvv site.yml
 
-# - name: Slack notification
-#   image: plugins/slack
-#   when:
-#     status: [ success, failure ]
-#   settings:
-#     webhook:
-#       from_secret: slack_webhook
-#     channel: sandbox
-#     template: >
-#       {{#success build.status}}
-#         Merge for build {{build.number}} succeeded. Here's a tequila~.
-#       {{else}}
-#         Build {{build.number}} failed. Fix me please.
-#       {{/success}}
+- name: Slack notification
+  image: plugins/slack
+  when:
+    status: [ success, failure ]
+  settings:
+    webhook:
+      from_secret: slack_webhook
+    channel: sandbox
+    template: >
+      {{#success build.status}}
+        Merge for build {{build.number}} succeeded. Here's a tequila~.
+      {{else}}
+        Build {{build.number}} failed. Fix me please.
+      {{/success}}
 
 trigger:
   branch:
